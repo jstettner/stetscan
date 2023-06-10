@@ -1,34 +1,10 @@
+mod types;
+
 use std::env;
-use std::net::{TcpListener, TcpStream};
+use std::net::TcpListener;
 
-trait TcpInterface {
-    fn handle_stream(&self, stream: &mut TcpStream);
-}
-
-struct Server;
-struct Client;
-
-type Byte = u8;
-
-const PACKET_SIZE: usize = 256;
-
-impl TcpInterface for Server {
-    fn handle_stream(&self, stream: &mut TcpStream) {
-        let mut data: Vec<Byte> = vec![];
-        let mut buffer = [0u8; PACKET_SIZE];
-        //loop {
-        //}
-    }
-}
-
-impl TcpInterface for Client{
-    fn handle_stream(&self, stream: &mut TcpStream) {
-        let mut data: Vec<Byte> = vec![];
-        let mut buffer = [0u8; PACKET_SIZE];
-        //loop {
-        //}
-    }
-}
+mod tcp_interface;
+use tcp_interface::{TcpInterface, Server, Client};
 
 fn main() -> std::io::Result<()> {
     let args: Vec<String> = env::args().collect();
